@@ -7,6 +7,9 @@ RUN cd /src/dotnet-function-app && \
 
 FROM mcr.microsoft.com/azure-functions/dotnet:2.0
 ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-    AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+    AzureFunctionsJobHost__Logging__Console__IsEnabled=true \
+    ASPNETCORE_URLS=http://+:5001
 
 COPY --from=installer-env ["/home/site/wwwroot", "/home/site/wwwroot"]
+
+CMD [ "/azure-functions-host/Microsoft.Azure.WebJobs.Script.WebHost" ]
