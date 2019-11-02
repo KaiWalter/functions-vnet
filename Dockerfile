@@ -11,5 +11,3 @@ ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
     ASPNETCORE_URLS=http://+:5001
 
 COPY --from=installer-env ["/home/site/wwwroot", "/home/site/wwwroot"]
-
-CMD [ "/azure-functions-host/Microsoft.Azure.WebJobs.Script.WebHost" ]
