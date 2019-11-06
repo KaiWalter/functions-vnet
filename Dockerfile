@@ -8,6 +8,8 @@ RUN cd /src/dotnet-function-app && \
 FROM mcr.microsoft.com/azure-functions/dotnet:2.0
 ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
     AzureFunctionsJobHost__Logging__Console__IsEnabled=true \
+    AzureWebJobsStorage=${STORAGE_ACCOUNT} \
+    APPINSIGHTS_INSTRUMENTATIONKEY=${APPINSIGHTS_INSTRUMENTATIONKEY} \
     ASPNETCORE_URLS=http://+:5001
 
 COPY --from=installer-env ["/home/site/wwwroot", "/home/site/wwwroot"]
